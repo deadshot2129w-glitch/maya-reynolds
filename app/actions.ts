@@ -32,6 +32,7 @@ export async function submitContact(formData: FormData): Promise<ContactState> {
   if (!referral) errors.referral = 'Please select an option.'
   if (!message) errors.message = 'Please tell me a little about what brings you in.'
   else if (message.length < 10) errors.message = 'Please add a little more detail (at least 10 characters).'
+  else if (message.length > 1000) errors.message = 'Message cannot exceed 1000 characters.'
 
   if (Object.keys(errors).length > 0) {
     return { status: 'error', errors, formError: 'Please correct the highlighted fields and try again.' }

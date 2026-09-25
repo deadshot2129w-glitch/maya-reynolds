@@ -14,6 +14,18 @@ export function Contact() {
   const [state, setState] = useState<ContactState>({ status: 'idle' })
   const [pending, setPending] = useState(false)
 
+  const [message, setMessage] = useState("");
+  const maxLength = 1000;
+
+const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const value = e.target.value;
+  if (value.length > 1000) {
+    setMessage(value.slice(0, 1000));
+  } else {
+    setMessage(value);
+  }
+};
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const form = event.currentTarget
@@ -130,12 +142,19 @@ export function Contact() {
               </Field>
 
               <Field
-                label="What brings you to therapy?"
-                name="message"
-                error={state.errors?.message}
-                hint="Share as much or as little as you like."
+              label="What brings you to therapy?"
+              name="message"
+              error={state.errors?.message}
+              hint={`Share as much or as little as you like. (${message.length}/${maxLength})`}
               >
-                <textarea id="message" name="message" rows={5} className={`${inputClass} resize-y`} />
+              <textarea 
+                id="message" 
+                name="message" 
+                rows={5} 
+                value={message}
+                onChange={handleChange}
+                className={`${inputClass} resize-y`} 
+              />
               </Field>
 
               {state.status === 'error' && state.formError && (

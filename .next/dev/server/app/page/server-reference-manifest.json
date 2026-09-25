@@ -1,0 +1,16 @@
+{
+  "node": {
+    "40333ede043f32a1c315acb0cdec3a8aceb0397c3c": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "submitContact",
+      "filename": "app/actions.ts"
+    }
+  },
+  "edge": {}
+}
